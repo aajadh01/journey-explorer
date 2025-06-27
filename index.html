@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Inspiration</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="header-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M17.8 19.2 16 11l3.5-3.5C21 6 21 4 19 4s-3 2-4.5 3.5L11 16 2.8 17.8C1.8 18.1 1.8 19.9 2.8 19.9s1.8-1 2-2z"/>
+                        <path d="M2.5 13.5 5.5 10.5"/>
+                        <path d="M18.5 5.5 21.5 2.5"/>
+                    </svg>
+                </div>
+                <div class="header-text">
+                    <h1 class="header-title">Travel Inspiration</h1>
+                    <p class="header-subtitle">Discover amazing destinations around the world</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Tabs Navigation -->
+        <div class="tabs">
+            <div class="tabs-list">
+                <button class="tab-trigger active" data-tab="carousel">Destinations</button>
+                <button class="tab-trigger" data-tab="facts">Country Facts</button>
+                <button class="tab-trigger" data-tab="quiz">Flag Quiz</button>
+            </div>
+
+            <!-- Destinations Tab -->
+            <div class="tab-content active" id="carousel">
+                <div class="carousel-section">
+                    <div class="carousel-container">
+                        <div class="carousel-wrapper">
+                            <div class="carousel-track" id="carouselTrack">
+                                <!-- Slides will be populated by JavaScript -->
+                            </div>
+                        </div>
+
+                        <!-- Navigation Buttons -->
+                        <button class="carousel-btn carousel-btn-prev" id="prevBtn">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="15,18 9,12 15,6"></polyline>
+                            </svg>
+                        </button>
+                        <button class="carousel-btn carousel-btn-next" id="nextBtn">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9,18 15,12 9,6"></polyline>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Destination Indicators -->
+                    <div class="carousel-indicators" id="carouselIndicators">
+                        <!-- Indicators will be populated by JavaScript -->
+                    </div>
+
+                    <!-- Learn More Button -->
+                    <div class="learn-more-section">
+                        <button class="learn-more-btn" id="learnMoreBtn">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="12" y1="16" x2="12" y2="12"></line>
+                                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                            </svg>
+                            <span id="learnMoreText">Learn About Country</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Country Facts Tab -->
+            <div class="tab-content" id="facts">
+                <div class="facts-section">
+                    <div class="facts-header">
+                        <h2 class="facts-title">Discover Country Facts</h2>
+                        <p class="facts-subtitle">Select a destination from the carousel or choose from the options below to learn fascinating facts!</p>
+                    </div>
+
+                    <div class="country-dropdown-section">
+                        <label for="countrySelect" class="dropdown-label">Select a Country:</label>
+                        <select id="countrySelect" class="country-dropdown">
+                            <option value="">Choose a destination...</option>
+                            <!-- Options will be populated by JavaScript -->
+                        </select>
+                    </div>
+
+                    <div class="country-display" id="countryDisplay" style="display: none;">
+                        <!-- Country information will be populated here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Flag Quiz Tab -->
+            <div class="tab-content" id="quiz">
+                <div class="quiz-section">
+                    <div class="quiz-card">
+                        <div class="quiz-header">
+                            <h2 class="quiz-title">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
+                                    <path d="M14 15h1.5a2.5 2.5 0 0 1 0 5H14"></path>
+                                    <path d="M6 9h8"></path>
+                                    <path d="M14 15H6"></path>
+                                    <path d="M6 9v6"></path>
+                                    <path d="M14 15v-6"></path>
+                                </svg>
+                                Flag Quiz Challenge
+                            </h2>
+                            <p class="quiz-description">Test your geography knowledge by guessing countries from their flags!</p>
+
+                            <div class="quiz-stats" id="quizStats" style="display: none;">
+                                <div class="stat-badge">
+                                    <span>Score: <span id="quizScore">0</span>/<span id="quizTotal">0</span></span>
+                                </div>
+                                <div class="stat-badge">
+                                    <span id="quizPercentage">0</span>% Correct
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="quiz-content">
+                            <div class="quiz-start" id="quizStart">
+                                <p class="quiz-start-text">Ready to test your flag knowledge?</p>
+                                <button class="quiz-start-btn" id="startQuizBtn">Start Quiz</button>
+                            </div>
+
+                            <div class="quiz-question" id="quizQuestion" style="display: none;">
+                                <div class="flag-display">
+                                    <div class="flag-container">
+                                        <img id="quizFlag" src="/placeholder.svg" alt="Country flag" class="quiz-flag">
+                                    </div>
+                                    <h3 class="question-text">Which country does this flag belong to?</h3>
+                                </div>
+
+                                <div class="quiz-options" id="quizOptions">
+                                    <!-- Quiz options will be populated here -->
+                                </div>
+                            </div>
+
+                            <div class="quiz-result" id="quizResult" style="display: none;">
+                                <div class="result-message" id="resultMessage">
+                                    <!-- Result message will be populated here -->
+                                </div>
+                                <div class="quiz-actions">
+                                    <button class="quiz-btn quiz-btn-primary" id="nextQuestionBtn">Next Question</button>
+                                    <button class="quiz-btn quiz-btn-secondary" id="resetQuizBtn">Reset Quiz</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Spinner -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner">
+            <div class="spinner"></div>
+            <p>Loading...</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
